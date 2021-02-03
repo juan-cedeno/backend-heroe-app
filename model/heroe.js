@@ -23,7 +23,8 @@ const heroeSchema = new Schema ({
         characters: {
              type : String,
              required : true
-        }
+        },
+        image : String
 })
 
 module.exports = model('Heroe' , heroeSchema)
