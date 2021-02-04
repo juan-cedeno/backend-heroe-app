@@ -19,6 +19,7 @@ const createHeroe = async (req = request, res = response) => {
 
 const getHeroes = async (req = request, res = response) => {
   try {
+   
     const heroes = await Heroe.find();
 
     res.json(heroes);
