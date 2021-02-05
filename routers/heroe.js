@@ -1,8 +1,9 @@
 
 const {Router} = require('express')
-const { createHeroe , getHeroes } = require('../controller/heroe')
+const { createHeroe , getHeroes , getHeroeById } = require('../controller/heroe')
 const {check} = require('express-validator')
 const {validateCapm} = require('../middleware/validate-camp')
+const {validateToken} = require('../middleware/validateToken')
 
 const routers = Router()
 
@@ -21,4 +22,7 @@ routers.post('/heroe',
  , createHeroe)
 
 routers.get('/heroe' , getHeroes)
+routers.get('/heroe/:id', validateToken , getHeroeById)
+
+
 module.exports = routers

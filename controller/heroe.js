@@ -19,7 +19,6 @@ const createHeroe = async (req = request, res = response) => {
 
 const getHeroes = async (req = request, res = response) => {
   try {
-   
     const heroes = await Heroe.find();
 
     res.json(heroes);
@@ -31,7 +30,29 @@ const getHeroes = async (req = request, res = response) => {
   }
 };
 
+const getHeroeById = async (req = request, res = response) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.json({
+        message: "No id",
+      });
+    }
+
+    const heroe = await Heroe.findById(id);
+
+    res.json(heroe);
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      message: "Comunicarse con soporte tecnico",
+    });
+  }
+};
+
 module.exports = {
   createHeroe,
-  getHeroes
+  getHeroes,
+  getHeroeById
 };
