@@ -17,12 +17,12 @@ routers.post('/heroe',
      check('characters' , 'Characters is required').not().isEmpty(),
      validateCapm
      
-
+     
 ]
- , createHeroe)
+, createHeroe)
 
 routers.get('/heroe' , getHeroes)
-routers.get('/heroe/:id', validateToken , getHeroeById)
+routers.get('/heroe/:id', [validateToken] , getHeroeById)
 
 
 module.exports = routers

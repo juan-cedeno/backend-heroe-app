@@ -2,6 +2,7 @@ const { request, response } = require("express");
 const { generateToken } = require("../helpers/generateJwt");
 const bcrypt = require("bcrypt");
 const User = require("../model/user");
+const jwt = require('jsonwebtoken')
 
 const registerUser = async (req = request, res = response) => {
   try {
@@ -21,6 +22,8 @@ const registerUser = async (req = request, res = response) => {
 
     await user.save();
     const token = await generateToken(user.id);
+
+
     res.json({
       id: user.id,
       name: user.name,
